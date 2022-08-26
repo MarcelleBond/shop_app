@@ -38,19 +38,39 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  
-
   List<Product> get items {
     return [..._items];
   }
-  
-  List<Product> get favoriteItems{
+
+  List<Product> get favoriteItems {
     return _items.where((element) => element.isFavorite).toList();
   }
 
   Product findById(String id) {
     return _items.firstWhere((element) => element.id == id);
   }
+
+  void addProduct(Product product) {
+    var newProduct = Product(
+      id: DateTime.now().toString(),
+      title: product.title,
+      description: product.description,
+      imageUrl: product.imageUrl,
+      price: product.price,
+    );
+    _items.add(newProduct);
+    notifyListeners();
+  }
   
+  void updateProduct(String id,Product product){
+    var prodIndex = _items.indexWhere((element) => element.id == id);
+    _items[prodIndex] = product;
+    notifyListeners();
+  }
   
+  void deleteProduct(String id)
+  {
+    _items.removeWhere((element) => element.id == id);
+    notifyListeners();
+  }
 }
