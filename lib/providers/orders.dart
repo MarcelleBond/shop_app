@@ -9,21 +9,31 @@ import '../models/order_item_model.dart';
 
 class Orders with ChangeNotifier {
   List<OrderItem> _orders = [];
+  String? _authToken;
+  String? _userId;
 
   List<OrderItem> get orders {
     return [..._orders];
   }
 
+  set authToken(String? token) {
+    _authToken = token;
+  }
+  
+  set userId(String? userId){
+    _userId = userId;
+  }
+
   Future<void> fetchAndSetOrders() async {
     final url = Uri.parse(
-        "https://flutter-shop-app-95618-default-rtdb.firebaseio.com/orders.json");
+        "https://flutter-shop-app-95618-default-rtdb.firebaseio.com/orders/$_userId.json?auth=$_authToken");
     try {
       var response = await http.get(url);
       if (jsonDecode(response.body) == null) {
         return;
       }
       var data = json.decode(response.body) as Map<String, dynamic>;
-      
+
       List<OrderItem> loadedOrders = [];
       data.forEach((orderId, order) {
         loadedOrders.add(OrderItem(
@@ -48,7 +58,7 @@ class Orders with ChangeNotifier {
 
   Future<void> addOrder(List<CartItem> products, double total) async {
     final url = Uri.parse(
-        "https://flutter-shop-app-95618-default-rtdb.firebaseio.com/orders.json");
+        "https://flutter-shop-app-95618-default-rtdb.firebaseio.com/orders/$_userId.json?auth=$_authToken");
     var timeStamp = DateTime.now();
     try {
       var response = await http.post(
