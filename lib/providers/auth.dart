@@ -5,10 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../auth/secrets.dart';
 import '../models/http_exception.dart';
 
 class Auth with ChangeNotifier {
-  final _apiKey = "AIzaSyBpdZN5uNI9R8OnDJA6L6oStol9xD4eYHA";
+  final _apiKey = firebaseApiKey;
   String? _token;
   DateTime? _expiryDate;
   String? _userId;
