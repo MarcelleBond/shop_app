@@ -32,11 +32,7 @@ class Auth with ChangeNotifier {
     return _userId;
   }
 
-  Future<void> _authenticate(
-    String email,
-    String password,
-    String urlSegment,
-  ) async {
+  Future<void> _authenticate(String email, String password, String urlSegment) async {
     var url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=$_apiKey");
 
