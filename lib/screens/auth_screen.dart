@@ -306,10 +306,9 @@ class _AuthCardState extends State<AuthCard>
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      backgroundColor: Theme.of(context).primaryColor,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 8.0),
-                      // primary: Theme.of(context).primaryTextTheme.button.color,
+                      primary: Theme.of(context).primaryColor,
                     ),
                     child:
                         Text(_authMode == AuthMode.login ? 'LOGIN' : 'SIGN UP'),
@@ -317,10 +316,10 @@ class _AuthCardState extends State<AuthCard>
                 TextButton(
                   onPressed: _switchAuthMode,
                   style: TextButton.styleFrom(
-                    foregroundColor: Theme.of(context).primaryColor,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30.0, vertical: 4),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    primary: Theme.of(context).primaryColor,
                   ),
                   child: Text(
                       '${_authMode == AuthMode.login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),

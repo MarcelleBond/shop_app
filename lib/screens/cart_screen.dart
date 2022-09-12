@@ -100,7 +100,7 @@ class _OderButtonState extends State<OderButton> {
         widget.cart.clear();
       },
       style: TextButton.styleFrom(
-        foregroundColor: Theme.of(context).colorScheme.primary,
+        primary: Theme.of(context).colorScheme.primary,
       ),
       child: isLoading ? const Center(child: CircularProgressIndicator()) : const Text("ORDER NOW"),
     );
