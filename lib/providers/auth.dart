@@ -88,7 +88,6 @@ class Auth with ChangeNotifier {
       return false;
     }
     final userData = pref.getString("userData");
-    print(userData);
     if (userData == null) {
       return false;
     }

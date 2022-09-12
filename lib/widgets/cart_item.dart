@@ -11,7 +11,7 @@ class CartItem extends StatelessWidget {
   final int quantaty;
 
   const CartItem(
-      {required this.id,
+      {super.key, required this.id,
       required this.productId,
       required this.title,
       required this.price,

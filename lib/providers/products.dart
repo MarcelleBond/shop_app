@@ -38,7 +38,6 @@ class Products with ChangeNotifier {
     try {
       final response = await http.get(url);
       if (response.statusCode >= 400){
-        print(response.body);
         throw HttpException("Could not load products at the moment");
       }
       
@@ -66,7 +65,6 @@ class Products with ChangeNotifier {
         notifyListeners();
       });
     } catch (e) {
-      print(e);
       rethrow;
     }
   }
@@ -99,7 +97,6 @@ class Products with ChangeNotifier {
       _items.add(newProduct);
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

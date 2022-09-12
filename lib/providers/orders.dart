@@ -52,7 +52,7 @@ class Orders with ChangeNotifier {
       _orders = loadedOrders.reversed.toList();
       notifyListeners();
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

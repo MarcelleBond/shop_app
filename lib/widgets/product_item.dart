@@ -7,6 +7,8 @@ import '../providers/product.dart';
 import '../screens/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
+  const ProductItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
@@ -23,7 +25,8 @@ class ProductItem extends StatelessWidget {
                   product.isFavorite ? Icons.favorite : Icons.favorite_border,
                 ),
               ),
-              onPressed: () => product.toggleFavoriteStatus(authToken.token, authToken.userId),
+              onPressed: () => product.toggleFavoriteStatus(
+                  authToken.token, authToken.userId),
               color: Theme.of(context).colorScheme.secondary),
           title: Text(
             product.title,
@@ -54,12 +57,16 @@ class ProductItem extends StatelessWidget {
             Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
                 arguments: product.id);
           },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
+          child: FadeInImage(
+              placeholder:
+                  const AssetImage("assets/images/product-placeholder.png"),
+              image: NetworkImage(
+                product.imageUrl,
+              ),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
     );
   }
 }

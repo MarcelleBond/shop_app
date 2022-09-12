@@ -90,7 +90,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
       try {
         Provider.of<Products>(context, listen: false).addProduct(_editProduct);
       } catch (e) {
-        await showDialog<Null>(
+        await showDialog<void>(
           context: context,
           builder: (ctx) => AlertDialog(
             title: const Text("An error occurred!"),
@@ -115,11 +115,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Product"),
+        title: const Text("Edit Product"),
         actions: [
           IconButton(
             onPressed: _saveForm,
-            icon: Icon(Icons.save),
+            icon: const Icon(Icons.save),
           ),
         ],
       ),

@@ -8,6 +8,8 @@ import '../widgets/cart_item.dart';
 class CartScreen extends StatelessWidget {
   static const routeName = "/cart";
 
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
@@ -82,25 +84,25 @@ class OderButton extends StatefulWidget {
 class _OderButtonState extends State<OderButton> {
   @override
   Widget build(BuildContext context) {
-    var _isLoading = false;
+    var isLoading = false;
     return TextButton(
-      onPressed: (widget.cart.totalAmount <= 0 || _isLoading) ? null : () async {
+      onPressed: (widget.cart.totalAmount <= 0 || isLoading) ? null : () async {
         setState(() {
-          _isLoading = true;
+          isLoading = true;
         });
         await Provider.of<Orders>(context, listen: false).addOrder(
           widget.cart.itemList,
           widget.cart.totalAmount,
         );
         setState(() {
-          _isLoading = false;
+          isLoading = false;
         });
         widget.cart.clear();
       },
       style: TextButton.styleFrom(
-        primary: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.primary,
       ),
-      child: _isLoading ? Center(child: const CircularProgressIndicator()) : const Text("ORDER NOW"),
+      child: isLoading ? const Center(child: CircularProgressIndicator()) : const Text("ORDER NOW"),
     );
   }
 }
