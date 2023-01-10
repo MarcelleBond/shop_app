@@ -48,7 +48,7 @@ class Products with ChangeNotifier {
       final extract = json.decode(response.body) as Map<String, dynamic>;
       url = Uri.parse("https://flutter-shop-app-95618-default-rtdb.firebaseio.com/userFavorites/$_userId.json?auth=$_authToken");
       final favResponse = await http.get(url);
-      final favExtract = json.decode(favResponse.body) as Map<String, dynamic>;
+      final favExtract = favResponse.body != "null" ? json.decode(favResponse.body) as Map<String, dynamic> : null;
       final List<Product> loadedProducts = [];
       extract.forEach((prodId, prodData) {
         loadedProducts.add(

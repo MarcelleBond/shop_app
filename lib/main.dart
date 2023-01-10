@@ -13,6 +13,7 @@ import './providers/products.dart';
 import './providers/cart.dart';
 import './providers/Orders.dart';
 import './providers/auth.dart';
+import 'helpers/custom_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,10 +47,14 @@ class MyApp extends StatelessWidget {
         builder: (context, auth, child) => MaterialApp(
           title: 'MyShop',
           theme: ThemeData(
-              primarySwatch: Colors.purple,
-              fontFamily: "Lato",
-              colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
-                  .copyWith(secondary: Colors.deepOrange)),
+            primarySwatch: Colors.purple,
+            fontFamily: "Lato",
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+                .copyWith(secondary: Colors.deepOrange),
+                pageTransitionsTheme: PageTransitionsTheme(builders: {
+                  TargetPlatform.android: CustomPageTransitionBuilder()
+                },)
+          ),
           home: auth.isAuth
               ? const ProductOverviewScreen()
               : FutureBuilder(
@@ -60,10 +65,12 @@ class MyApp extends StatelessWidget {
                           : const AuthScreen(),
                 ),
           routes: {
-            ProductDetailScreen.routeName: (context) => const ProductDetailScreen(),
+            ProductDetailScreen.routeName: (context) =>
+                const ProductDetailScreen(),
             CartScreen.routeName: (context) => const CartScreen(),
             OrdersScreen.routeName: (context) => const OrdersScreen(),
-            UserProductsScreen.routeName: (context) => const UserProductsScreen(),
+            UserProductsScreen.routeName: (context) =>
+                const UserProductsScreen(),
             EditProductScreen.routeName: (context) => const EditProductScreen(),
           },
         ),
