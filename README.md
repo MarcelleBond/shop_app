@@ -1,16 +1,37 @@
-# shop_app
+# Shop App
 
-A new Flutter project.
+Shop App is a basic online shopping app that allows users to add, update, and delete products that they have for sale. It connects to a Firebase backend, which stores all user details and authentication. Users can also add products to their cart, checkout, and add products to their favorites.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Add, update, and delete products
+- Authentication and user details stored on Firebase
+- Cart functionality for purchasing products
+- Favorites functionality for saving favorite products
+- No payment gateway attached as of yet (for learning purposes)
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Firebase backend
+- Flutter for app development
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+1. Clone the repository
+2. Open the project in your preferred IDE
+3. Run the app on your preferred emulator or device
+
+## Usage
+
+1. Sign up or log in to your account
+2. Browse available products
+3. Add products to your cart or favorites
+4. Proceed to checkout for products in your cart
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
